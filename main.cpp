@@ -1,26 +1,30 @@
 #include <iostream>
 #include <thread>
-#include <vector>
 
 using namespace std;
 
-void run ()
+void run()
 {
-    std::cout << "Thread 1\n";
+    cout << "Thread 1\n";
+}
+
+void die()
+{
+    cout<<"Thread death\n";
 }
 
 int main()
 {
     // thread name(function)
-    std::thread t0(run);
+    thread t0(run);
+    thread t2(die);
 
     //lambda construction
-    std::thread t1([]{
-        std::cout << "Thread 2\n";
-    });
+    thread t1([]{ cout << "Thread 2\n"; });
 
     std::cout << "Main\n";
     t0.join();
+    t2.join();
     t1.join();
 }
 
