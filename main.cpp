@@ -1,4 +1,32 @@
-#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <thread>
+#include <vector>
+
+using namespace std;
+
+void run ()
+{
+    std::cout << "Thread 1\n";
+}
+
+int main()
+{
+    // thread name(function)
+    std::thread t0(run);
+
+    //lambda construction
+    std::thread t1([]{
+        std::cout << "Thread 2\n";
+    });
+
+    std::cout << "Main\n";
+    t0.join();
+    t1.join();
+}
+
+
+
+/*#include <SFML/Graphics.hpp>
 #include <SFML/Network.hpp>
 
 #include <cmath>
@@ -155,4 +183,4 @@ int main()
     }
 
     return 0;
-}
+}*/
