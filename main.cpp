@@ -12,7 +12,7 @@ void die()
 {
     cout<<"Thread death\n";
 }
-
+ 
 int main()
 {
     // thread name(function)
